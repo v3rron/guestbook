@@ -1,0 +1,15 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin radius{
+  border-radius: 4px;
+}
+
+div.main-event-li{
+  //@include radius;
+  //list-style-type: none;
+  border: 1px solid lightgrey;
+  padding: 20px;
+  //margin: 20px 20px 0 0;
+}

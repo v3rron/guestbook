@@ -17,9 +17,10 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: guestbook_development
   pool: 5
-  username: root
+  username: go7hic
   password: root
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,15 +47,18 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: guestbook_test
   pool: 5
-  username: root
+  username: go7hic
   password: root
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: guestbook_production
+  host: ec2-54-221-224-138.compute-1.amazonaws.com
+  port: 5432
+  database: d3oakum8qvig30
   pool: 5
-  username: guestbook
-  password:
+  username: zrfewkazewepii
+  password: Y6w473uQ4_ezqAhPrVRf875iu0
