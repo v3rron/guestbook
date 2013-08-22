@@ -13,7 +13,7 @@ events = Event.create([
                           { name: 'GeekWire Summit Thursday, September 12th 9:30 a.m. – 5:30 p.m. Sheraton Seattle, Downtown Seattle', description: 'Where can you hear from a top Silicon Valley venture capitalist, the leader of Microsoft’s Halo business, HBO’s top technology executive, the former Nordstrom.com president, a visionary photographer who’s making his mark in online education, and an Amazon veteran aiming to upend traditional retail with the help of robots? It’s the GeekWire Summit, our biggest event of the year, coming up on Sept. 12 in downtown Seattle. And that’s just part of what we have in store. The GeekWire Summit is the premier technology conference in the Pacific Northwest. Organized and curated by GeekWire’s John Cook and Todd Bishop, this event brings together engineers, entrepreneurs and business leaders from around the region and the country for conversations and insights at the intersection of business and technology, reflecting GeekWire’s mission to inform, empower and unite the region’s technology community. Tickets are available here. Continue reading below for highlights from the agenda for this one-of-a-kind conference.' }
                       ])
 events.each do |event|
-  Guest.create(name: 'Ronen', email: 'ronen.verdi@gmail.com', phone: '6474715324', designation: 'Mr', event_id: event.id)
+  Guest.create(name: 'Ronen', email: 'ronen@gmail.com', phone: '6473456543', designation: 'Mr', event_id: event.id)
   Guest.create(name: 'Marlina', email: 'marlina@gmail.com', phone: '5387454356', designation: 'Ms', event_id: event.id)
   Guest.create(name: 'Bohdan', email: 'bohdan@gmail.com', phone: '3672453275', designation: 'Mr', event_id: event.id)
 end
