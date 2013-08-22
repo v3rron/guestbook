@@ -1,33 +1,39 @@
-<%= form_for(@guest) do |f| %>
-  <% if @guest.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+<div class="row">
+  <%= form_for [@event, @guest], html: {role: 'form', class: 'col-lg-6'} do |f| %>
+      <% if @guest.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-danger">
+                <%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:
+            </div>
 
-      <ul>
-      <% @guest.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <div class="alert alert-danger">
+              <ul class="field_with_errors">
+                <% @guest.errors.full_messages.each do |msg| %>
+                    <li> * <%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :designation %><br>
-    <%= f.text_field :designation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Enter guest's name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %><br>
+        <%= f.text_field :email, class: 'form-control', placeholder: "Enter the guest's email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone, class: 'form-control', placeholder: "Enter guest's phone number" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :designation %><br>
+        <%= f.select(:designation, options_for_select(%w(Mr Ms Mrs Dr)),{}, {class: 'form-control'}) %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+  <% end %>
+</div>

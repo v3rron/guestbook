@@ -1,6 +1,9 @@
 <div class="page-header">
   <h1>Events</h1>
 </div>
+<%= link_to 'New Event', new_event_path, class: 'btn btn-success' %>
+<br>
+<br>
 <div class="row">
     <% @events.each do |event| %>
         <div class="main-event-li col-md-4">
@@ -11,9 +14,7 @@
             <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-default' %>
             <%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
           </div>
-          <div class="pull-right">Guests: <%= event.guests.length %></div>
+          <div class="pull-right">Guests: <%= event.guests.size %></div>
         </div>
     <% end %>
 </div>
-<br>
-<%= link_to 'New Event', new_event_path, class: 'btn btn-success' %>

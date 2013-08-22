@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-  has_many :guests
+  has_many :guests, dependent: :destroy, inverse_of: :event
 end

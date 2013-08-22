@@ -5,12 +5,6 @@ class GuestsControllerTest < ActionController::TestCase
     @guest = guests(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:guests)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -22,11 +16,6 @@ class GuestsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to guest_path(assigns(:guest))
-  end
-
-  test "should show guest" do
-    get :show, id: @guest
-    assert_response :success
   end
 
   test "should get edit" do

@@ -1,20 +1,14 @@
 class GuestsController < ApplicationController
+  before_filter :get_event
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
 
-  # GET /guests
-  # GET /guests.json
-  def index
-    @guests = Guest.all
-  end
-
-  # GET /guests/1
-  # GET /guests/1.json
-  def show
+  def get_event
+    @event = Event.find(params[:event_id])
   end
 
   # GET /guests/new
   def new
-    @guest = Guest.new
+    @guest = @event.guests.new
   end
 
   # GET /guests/1/edit
@@ -24,12 +18,12 @@ class GuestsController < ApplicationController
   # POST /guests
   # POST /guests.json
   def create
-    @guest = Guest.new(guest_params)
+    @guest = @event.guests.new(guest_params)
 
     respond_to do |format|
       if @guest.save
-        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @guest }
+        format.html { redirect_to @event, notice: 'Guest was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
@@ -42,7 +36,7 @@ class GuestsController < ApplicationController
   def update
     respond_to do |format|
       if @guest.update(guest_params)
-        format.html { redirect_to @guest, notice: 'Guest was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Guest was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +50,7 @@ class GuestsController < ApplicationController
   def destroy
     @guest.destroy
     respond_to do |format|
-      format.html { redirect_to guests_url }
+      format.html { redirect_to @event }
       format.json { head :no_content }
     end
   end

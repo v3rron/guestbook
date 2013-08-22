@@ -1,5 +1,7 @@
-<h1>New guest</h1>
+<div class="page-header">
+  <h1>New guest</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', guests_path %>
+<br>
+<%= link_to 'Back to event', event_path(@event), class: 'btn btn-default btn-xs' %>

@@ -1,9 +1,8 @@
 Guestbook::Application.routes.draw do
-  resources :events
+  resources :events do
+    resources :guests
+  end
 
-  resources :guests
-
-  get "main/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

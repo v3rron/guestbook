@@ -5,5 +5,40 @@
   <%= @event.description %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-default' %>
-<%= link_to 'Back', events_path, class: 'btn btn-default' %>
+<%= link_to 'Edit event', edit_event_path(@event), class: 'btn btn-default' %>
+<%= link_to 'Back to list', events_path, class: 'btn btn-default' %>
+
+<div class="page-header">
+  <h2>Guests</h2>
+</div>
+
+<%= link_to 'New Guest', new_event_guest_path(@event), class: 'btn btn-success' %>
+<br>
+<br>
+<% if @event.guests.exists? %>
+    <div class="table-responsive">
+      <table class="table table-stripped table-bordered table-hover radius">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th colspan="2"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @guests = @event.guests.sort {|a,b| b.updated_at <=> a.updated_at } %>
+        <% @guests.each do |guest| %>
+            <tr>
+              <td><%= guest.designation + '. ' + guest.name %></td>
+              <td><%= guest.email %></td>
+              <td><%= guest.phone %></td>
+              <td class="text-center"><%= link_to 'Edit', edit_event_guest_path(@event, guest), class: 'btn btn-default btn-sm' %></td>
+              <td class="text-center"><%= link_to 'Delete', [@event, guest], method: :delete, class: 'btn btn-danger btn-sm' %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+<% end %>
