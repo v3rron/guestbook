@@ -5,14 +5,12 @@
  * Time: 14:56
  * To change this template use File | Settings | File Templates.
  */
+'use strict';
 
 angular.module('event', ['eventService'])
     .config(['$routeProvider', function($provider) {
         $provider
             .when('/events', {templateUrl: '/events/index.html', controller: EventsCtrl})
-            .when('/events/new', {templateUrl: '/events/new.html', controller: EventNewCtrl})
-            .when('/events/:event_id', {templateUrl: '/events/show.html', controller: EventCtrl})
-            .when('/events/:event_id/edit', {templateUrl: '/events/edit.html', controller: EventEditCtrl});
     }])
     .config(["$httpProvider", function(provider) {
         provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
