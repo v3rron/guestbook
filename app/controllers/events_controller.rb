@@ -1,16 +1,29 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  def angular
+    respond_to do |format|
+      format.html
+      format.json { head :no_content }
+    end
+  end
+
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    @events.each do |event|
+      event.description = event.description.truncate( 350, { :separator => ' ', :omission => ' ...' } )
+    end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-
+    respond_to do |format|
+      format.json { render :json => @event.to_json(include: :guests ) }
+      format.html { render :html => @event }
+    end
   end
 
   # GET /events/new
@@ -56,9 +69,11 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
+    flash[:error] = 'Event was deleted'
     respond_to do |format|
       format.html { redirect_to events_url }
       format.json { head :no_content }
+      format.js   { render :nothing => true }
     end
   end
 

@@ -6,6 +6,18 @@ class GuestsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def index
+    respond_to do |format|
+      format.json { render :json => @event.guests.to_json }
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.json { render :json => @guest.to_json }
+    end
+  end
+
   # GET /guests/new
   def new
     @guest = @event.guests.new
